@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  bilibili:
+    image: "bilibili:1.0.0"
+    deploy:
+      #      placement:
+      #        constraints:
+      #          - node.labels.src.id == s15
+      replicas: ${REPLICAS:-1}
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+    #      resources:
+    #        limits:
+    #          cpus: '0.50'
+    #          memory: 50M
+    networks:
+      - loboba
+    ports:
+      - '8090:80'
+networks:
+  loboba:
+    external: true
