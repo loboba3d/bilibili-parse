@@ -480,10 +480,7 @@ class Bilibili
         if (!empty($this->epid)) {
             $api = array(
                 'method' => 'GET',
-                'url'    => array(
-                    'bangumi' => 'https://api.bilibili.com/pgc/view/web/season',
-                    'cheese'  => 'https://api.bilibili.com/pugv/view/web/season'
-                )[$this->type != 'bangumi' ? 'cheese' : 'bangumi'],
+                'url'    => $this->type != 'bangumi' ? 'https://api.bilibili.com/pugv/view/web/season' : 'https://api.bilibili.com/pgc/view/web/season',
                 'body'   => array(
                     'ep_id'      => $this->epid,
                     'access_key' => $this->access_key
