@@ -357,10 +357,7 @@ class Bilibili
 
         $api = array(
             'method' => 'GET',
-            'url'    => array(
-                'flv' => 'https://interface.bilibili.com/v2/playurl',
-                'mp4' => 'https://app.bilibili.com/v2/playurlproj'
-            )[$this->format != 'flv' ? 'mp4' : 'flv'],
+            'url'    => $this->format != 'flv' ? 'https://app.bilibili.com/v2/playurlproj' : 'https://interface.bilibili.com/v2/playurl',
             'body'   => array(
                 'appkey'     => $this->appkey,
                 'cid'        => $this->cid,
